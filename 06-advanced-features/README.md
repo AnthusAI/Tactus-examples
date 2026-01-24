@@ -11,7 +11,6 @@ This chapter covers advanced Tactus capabilities for building sophisticated AI w
 - Recursive procedures
 - Custom models (PyTorch, scikit-learn)
 - Host tools and broker patterns
-- Script mode for CLI workflows
 
 ## Examples
 
@@ -30,5 +29,3 @@ _Examples coming soon. This chapter will demonstrate advanced patterns for compl
 **Custom Models**: Integration with non-LLM models like classifiers, regressors, or custom PyTorch models. Useful for hybrid AI workflows.
 
 **Host Tools**: Tools that run on the host system (outside the sandbox). Accessed via a broker pattern for controlled execution.
-
-**Script Mode**: Run Tactus procedures from the command line with input/output redirection. Useful for batch processing and integration with other tools.

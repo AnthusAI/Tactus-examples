@@ -6,6 +6,8 @@ Welcome to Tactus! This chapter introduces the fundamental concepts of the Tactu
 
 - How to define AI agents with system prompts
 - Basic agent interaction and responses
+- Simple Tactus code without formal `Procedure` structure
+- Formal procedures with input/output validation
 - Embedded BDD specifications for testing
 - Fuzzy matching for flexible output validation
 
@@ -13,13 +15,13 @@ Welcome to Tactus! This chapter introduces the fundamental concepts of the Tactu
 
 ### 01-hello-world.tac
 
-A minimal Tactus program demonstrating the core workflow. This example shows how to:
+A minimal Tactus program demonstrating the core workflow without the formal `Procedure` structure. This example shows how to:
 - Define an agent with a provider and model
+- Write simple Tactus code that just returns an agent call
 - Include an embedded BDD specification with Gherkin syntax
-- Execute a simple agent interaction
 - Use fuzzy matching to validate agent responses flexibly
 
-This example uses the OpenAI GPT-4o-mini model and includes a specification that tests the agent's greeting behavior using fuzzy matching with a 0.9 threshold.
+This demonstrates that Tactus code doesn't require the formal `Procedure { input = {...}, output = {...}, function(input) ... end }` structure when you don't need input/output validation. Simple cases can just define agents and return results directly.
 
 ### 02-simple-logic.tac
 
