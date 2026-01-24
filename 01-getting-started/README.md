@@ -21,12 +21,24 @@ A minimal Tactus program demonstrating the core workflow. This example shows how
 
 This example uses the OpenAI GPT-4o-mini model and includes a specification that tests the agent's greeting behavior using fuzzy matching with a 0.9 threshold.
 
-**Run it:**
-```bash
-tactus run 01-getting-started/01-hello-world.tac
-```
+### 02-simple-logic.tac
 
-**Test it:**
-```bash
-tactus test 01-getting-started/01-hello-world.tac --mock
-```
+A pure logic example that demonstrates Tactus procedures without using any AI agents. This example shows:
+- How to define procedures with input and output schemas using field definitions
+- State management with the `state` primitive
+- Multiple BDD specifications testing different aspects of the procedure
+- Basic Lua control flow (loops, conditionals)
+
+This example requires no API keys since it doesn't call any LLM providers - perfect for learning the core Tactus programming model.
+
+### 03-parameters.tac
+
+Demonstrates how to work with procedure parameters (inputs) and use them throughout your workflow. This example shows:
+- Defining input schemas with descriptions and default values
+- Accessing input parameters within the procedure function
+- Using parameters in loops and logic
+- Logging with the Log utility
+- State management with `State.increment()`
+- Returning structured output that references input parameters
+
+This example defines an agent but uses it minimally - focusing on parameter handling and state management.

@@ -77,7 +77,22 @@ The CI system ensures all showcased examples remain runnable and pass their spec
 ## Chapters
 
 ### [01-getting-started](01-getting-started/)
-Introduction to Tactus fundamentals: agents, specifications, and basic interactions.
+Introduction to Tactus fundamentals: agents, specifications, and basic interactions. Start here if you're new to Tactus.
+
+### [02-agents](02-agents/)
+Working with AI agents: multiple providers, streaming, multi-agent workflows, and model switching. _Examples coming soon._
+
+### [03-standard-library](03-standard-library/)
+Built-in utilities for state management, logging, file I/O, sessions, and checkpointing. _Examples coming soon._
+
+### [04-specifications](04-specifications/)
+Behavior-driven development with Gherkin specifications, fuzzy matching, and comprehensive testing patterns. _Examples coming soon._
+
+### [05-evaluations](05-evaluations/)
+Quantitative assessments: running evaluations over datasets, metrics, thresholds, and statistical analysis. _Examples coming soon._
+
+### [06-advanced-features](06-advanced-features/)
+Advanced capabilities: tools, MCP integration, sub-procedures, custom models, and script mode. _Examples coming soon._
 
 ## For Tactus-web Integration
 
