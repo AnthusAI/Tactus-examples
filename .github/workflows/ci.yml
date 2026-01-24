@@ -1,0 +1,38 @@
+name: Test Examples
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Test mode'
+        required: false
+        default: 'mock'
+        type: choice
+        options:
+          - mock
+          - real
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Tactus
+        run: pip install tactus
+
+      - name: Run Tests
+        run: |
+          if [[ "${{ github.event.inputs.mode }}" == "real" ]]; then
+            ./scripts/test-all.sh --real
+          else
+            ./scripts/test-all.sh
+          fi
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
