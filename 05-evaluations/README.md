@@ -14,7 +14,38 @@ This chapter explores Tactus evaluations - quantitative assessments of AI workfl
 
 ## Examples
 
-_Examples coming soon. This chapter will cover evaluation patterns for measuring and improving AI workflow quality._
+### 01-simple-eval.tac
+
+A basic evaluation demonstrating core concepts without requiring LLM API calls. This example shows:
+- Defining inline datasets with test cases
+- Evaluation syntax with `Evaluation({...})`
+- Expected output validation
+- Success criteria based on exact output matching
+- Running evaluations with `tactus eval`
+
+This example uses a pure logic procedure (no LLM calls) to focus on evaluation mechanics - perfect for learning the evaluation framework without API costs.
+
+### 02-success-rate.tac
+
+Demonstrates success rate calculations and aggregated metrics. This example shows:
+- Running multiple test cases in a single evaluation
+- Calculating success rate across dataset
+- Pass/fail criteria for individual test cases
+- Aggregated statistics and reporting
+- Using success rate to measure overall quality
+
+Success rate is the primary metric for evaluating AI workflows - it tells you what percentage of test cases produce correct outputs.
+
+### 03-thresholds.tac
+
+Shows how to set minimum acceptable thresholds for metrics. This example demonstrates:
+- Defining threshold requirements (e.g., success_rate >= 0.95)
+- Evaluation failure when thresholds aren't met
+- Multiple threshold configurations
+- Using thresholds for quality gates in CI/CD
+- Balancing strictness with practical tolerance
+
+Thresholds are essential for automated quality control - they let you enforce minimum standards and catch regressions before deployment.
 
 ## Key Concepts
 
