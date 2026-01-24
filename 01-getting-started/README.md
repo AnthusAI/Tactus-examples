@@ -42,3 +42,15 @@ Demonstrates how to work with procedure parameters (inputs) and use them through
 - Returning structured output that references input parameters
 
 This example defines an agent but uses it minimally - focusing on parameter handling and state management.
+
+### 04-simple-agent.tac
+
+A complete agent interaction demonstrating real LLM workflows with tool calling. This example shows:
+- Defining an agent with a system prompt and initial message
+- Tool integration using the built-in `done` tool
+- Multi-turn agent loops with a maximum turn limit
+- Checking if a tool was called using `done.called()`
+- Extracting tool call arguments and using them in outputs
+- Pattern matching in specifications to validate varied agent responses
+
+This example uses OpenAI's GPT-5-mini (a reasoning model) and demonstrates the full agent lifecycle from initial message through tool calling to completion. The specification uses pattern matching to accommodate natural variations in greeting responses.
