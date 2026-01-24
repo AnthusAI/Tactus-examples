@@ -13,7 +13,38 @@ This chapter focuses on working with AI agents in Tactus - the core abstraction 
 
 ## Examples
 
-_Examples coming soon. This chapter will cover agent basics, multi-model support, streaming, and provider-specific features._
+### 01-multi-model.tac
+
+Demonstrates using multiple models in a single workflow - a researcher using GPT-4o and a summarizer using GPT-4o-mini. This example shows:
+- Defining multiple agents with different models
+- Sequential agent execution (research then summarize)
+- Template strings in initial messages (`{input.topic}`, `{research}`)
+- Passing results between agents
+- Turn-limited loops for each agent phase
+- Using the done tool to extract agent outputs
+
+This example showcases Tactus's ability to compose workflows from different models based on task requirements - using a more capable model for research and a faster, cheaper model for summarization.
+
+### 02-streaming.tac
+
+Shows real-time streaming responses from an agent. This example demonstrates:
+- Enabling streaming mode with `streaming = true`
+- Processing token-by-token responses as they arrive
+- Accumulating streamed content into a final result
+- Using streaming for interactive or long-form generation
+
+Streaming is useful for user-facing applications where you want to display partial responses as they're generated, or for monitoring long-running agent operations.
+
+### 03-bedrock.tac
+
+Demonstrates using AWS Bedrock as a provider with multiple Claude models. This example shows:
+- Configuring the `bedrock` provider
+- Using different Claude models (Claude 3.5 Sonnet, Claude 3 Haiku, Claude 3 Opus)
+- AWS credential configuration requirements
+- Provider-specific model identifiers
+- Multi-agent workflows across different Bedrock models
+
+This example requires AWS credentials to be configured (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`) and demonstrates Tactus's support for enterprise cloud providers.
 
 ## Key Concepts
 
