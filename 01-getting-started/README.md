@@ -56,3 +56,16 @@ A complete agent interaction demonstrating real LLM workflows with tool calling.
 - Pattern matching in specifications to validate varied agent responses
 
 This example uses OpenAI's GPT-5-mini (a reasoning model) and demonstrates the full agent lifecycle from initial message through tool calling to completion. The specification uses pattern matching to accommodate natural variations in greeting responses.
+
+### 05-hello-world-with-validation.tac
+
+The hello-world example revisited with the formal `Procedure` structure and input/output validation. This example shows:
+- Defining input schema with required and optional fields
+- Setting default values for optional parameters
+- Defining output schema with field descriptions
+- Type validation for inputs and outputs
+- Using input parameters within the procedure function
+- Returning structured output that matches the schema
+- Testing with multiple scenarios including default values
+
+This demonstrates when and why you'd use the formal Procedure structure - when you need to validate inputs, provide defaults, document your API, or ensure type safety. Compare this to 01-hello-world.tac to see the difference between simple and formal approaches.
