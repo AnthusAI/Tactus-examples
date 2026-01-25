@@ -79,6 +79,12 @@ The CI system ensures all showcased examples remain runnable and pass their spec
 ### [01-getting-started](01-getting-started/)
 Introduction to Tactus fundamentals: agents, specifications, and basic interactions.
 
+### [02-classification](02-classification/)
+Real-world classification patterns: route messy text into explicit label sets using LLMs and fuzzy matching.
+
+### [03-human-in-the-loop](03-human-in-the-loop/)
+Patterns for integrating human decision-making into AI workflows, including agent-driven approval requests.
+
 ## For Tactus-web Integration
 
 This repository is designed to be ingested by the Tactus-web build process. See [README-INGESTION.md](README-INGESTION.md) for details on the ingestion pipeline and frontmatter requirements.
