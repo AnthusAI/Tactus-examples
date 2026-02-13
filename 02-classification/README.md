@@ -20,3 +20,9 @@ Compose classifiers: use fuzzy matching for obvious cases first, then fall back 
 - LLM classification fallback
 - Returning which path was used (fuzzy vs llm)
 
+### model-primitive-sentiment
+
+A minimal Model primitive example using a mock backend. Demonstrates:
+- Stateless prediction via the Model primitive
+- Input/output schemas on the model itself
+- Deterministic specs that run in CI without API keys
