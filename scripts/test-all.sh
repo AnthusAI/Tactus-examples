@@ -63,9 +63,9 @@ TACTUS_CMD=("$PYTHON_BIN" -m tactus.cli.app)
 while IFS= read -r file; do
   echo "Testing: $file"
   if "${TACTUS_CMD[@]}" test "$file" $MODE; then
-    ((PASSED++))
+    PASSED=$((PASSED + 1))
   else
-    ((FAILED++))
+    FAILED=$((FAILED + 1))
     echo "❌ FAILED: $file"
   fi
   echo ""
