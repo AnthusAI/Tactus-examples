@@ -3,8 +3,7 @@
 -- Aligned with pydantic-ai's message_history concept
 
 chatbot = Agent {
-    provider = "openai",
-    model = "gpt-4o-mini",
+    model = "openai/gpt-4o-mini",
     system_prompt = "You are a helpful chatbot. Answer questions concisely.",
 }
 

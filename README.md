@@ -84,6 +84,12 @@ Introduction to Tactus fundamentals: agents, specifications, and basic interacti
 ### [02-agents](02-agents/)
 Working with AI agents: multiple providers, streaming, multi-agent workflows, and model switching.
 
+### [02-classification](02-classification/)
+Real-world classification patterns: route messy text into explicit label sets using LLMs and fuzzy matching.
+
+### [03-human-in-the-loop](03-human-in-the-loop/)
+Patterns for integrating human decision-making into AI workflows, including agent-driven approval requests.
+
 ### [03-standard-library](03-standard-library/)
 Built-in utilities for state management, logging, file I/O, sessions, and checkpointing.
 
@@ -95,18 +101,6 @@ Quantitative assessments: running evaluations over datasets, metrics, thresholds
 
 ### [06-advanced-features](06-advanced-features/)
 Advanced capabilities: tools, MCP integration, sub-procedures, and custom models. _Examples coming soon._
-
-### [02-classification](02-classification/)
-Real-world classification patterns: route messy text into explicit label sets using LLMs and fuzzy matching.
-
-### [03-human-in-the-loop](03-human-in-the-loop/)
-Patterns for integrating human decision-making into AI workflows, including agent-driven approval requests.
-
-### [02-classification](02-classification/)
-Real-world classification patterns: route messy text into explicit label sets using LLMs and fuzzy matching.
-
-### [03-human-in-the-loop](03-human-in-the-loop/)
-Patterns for integrating human decision-making into AI workflows, including agent-driven approval requests.
 
 ## For Tactus-web Integration
 
@@ -124,6 +118,9 @@ When adding examples:
 
 - Python 3.11+
 - Tactus CLI: `pip install tactus`
+- Optional extras for trainable Model examples:
+  - scikit-learn trainer + Hugging Face datasets: `pip install tactus[ml]`
+  - Hugging Face Transformers trainer: `pip install tactus[hf]`
 - API keys (for running examples against real APIs): Set `OPENAI_API_KEY` environment variable
 
 ## Links

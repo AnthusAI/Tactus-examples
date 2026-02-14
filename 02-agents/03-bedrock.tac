@@ -7,8 +7,7 @@ local done = require("tactus.tools.done")
 
 -- Agent using Claude 4.5 Haiku via Bedrock (using inference profile)
 haiku_assistant = Agent {
-    provider = "bedrock",
-    model = "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    model = "bedrock/us.anthropic.claude-haiku-4-5-20251001-v1:0",
     system_prompt = [[You are a helpful assistant powered by Claude 4.5 Haiku running on AWS Bedrock.
 
 When the user asks you a question, provide a clear and concise answer.
@@ -38,11 +37,7 @@ Procedure {
 
             -- Accumulate the response message from each turn
             if response.output and response.output ~= "" then
-                -- Handle both string outputs and table outputs with response field
                 local msg = response.output
-                if type(msg) == "table" and msg.response then
-                    msg = msg.response
-                end
                 if type(msg) == "string" then
                     response_text = response_text .. msg
                 end
@@ -66,7 +61,7 @@ Procedure {
 
         return {
             provider = "bedrock",
-            model = "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            model = "bedrock/us.anthropic.claude-haiku-4-5-20251001-v1:0",
             response = response_text,
             summary = summary,
             turns = turn_count,

@@ -5,8 +5,7 @@ local done = require("tactus.tools.done")
 
 -- Agent
 processor = Agent {
-  provider = "openai",
-  model = "gpt-4o-mini",
+  model = "openai/gpt-4o-mini",
   system_prompt = "Process the task: {input.task}. Call done when finished.",
   initial_message = "Start processing",
   tools = {done},

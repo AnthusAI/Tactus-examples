@@ -4,8 +4,7 @@
 
 -- Simple agent that just writes text (no tools needed for streaming demo)
 storyteller = Agent {
-    provider = "openai",
-    model = "gpt-4o-mini",
+    model = "openai/gpt-4o-mini",
     system_prompt = [[You are a creative storyteller. Write engaging short stories.
 
 When asked to write a story:

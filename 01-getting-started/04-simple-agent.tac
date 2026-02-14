@@ -3,8 +3,7 @@
 local done = require("tactus.tools.done")
 
 greeter = Agent {
-    provider = "openai",
-    model = "gpt-5-mini",
+    model = "openai/gpt-5-mini",
     model_type = "responses",  -- Required for reasoning models (o3, gpt-5 series)
     temperature = 1.0,         -- Reasoning models require temperature=1.0
     max_tokens = 16000,        -- Reasoning models require max_tokens >= 16000

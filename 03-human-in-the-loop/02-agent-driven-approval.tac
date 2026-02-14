@@ -63,8 +63,7 @@ Toolset "hitl_approval" {
 -- Define deployment review agent
 -- The agent decides when to call ask_approval based on its instructions
 deployment_reviewer = Agent {
-    model = "gpt-4o-mini",
-    provider = "openai",
+    model = "openai/gpt-4o-mini",
     tool_choice = "required",
 
     system_prompt = [[You are a deployment review assistant.

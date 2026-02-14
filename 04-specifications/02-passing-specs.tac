@@ -5,8 +5,7 @@ local done = require("tactus.tools.done")
 
 -- Agent definition (will be mocked in tests)
 worker = Agent {
-  provider = "openai",
-  model = "gpt-4o-mini",
+  model = "openai/gpt-4o-mini",
   system_prompt = "You are a worker. Call the done tool when finished.",
   tools = {done},
 }

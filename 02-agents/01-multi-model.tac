@@ -5,8 +5,7 @@ local done = require("tactus.tools.done")
 
 -- Agents (defined at top level - reusable across procedures)
 researcher = Agent {
-    provider = "openai",
-    model = "gpt-4o",
+    model = "openai/gpt-4o",
     system_prompt = [[You are a researcher. Provide brief research findings (2-3 paragraphs maximum).
 IMPORTANT: You MUST call the 'done' tool when finished, passing your research as the 'reason' argument.
 ]],
@@ -15,8 +14,7 @@ IMPORTANT: You MUST call the 'done' tool when finished, passing your research as
 }
 
 summarizer = Agent {
-    provider = "openai",
-    model = "gpt-4o-mini",
+    model = "openai/gpt-4o-mini",
     system_prompt = [[You are a summarizer. Create a brief 1-2 paragraph summary of the provided text.
 IMPORTANT: You MUST call the 'done' tool when finished, passing your summary as the 'reason' argument.
 ]],
@@ -81,7 +79,7 @@ Procedure {
         return {
           research = research,
           summary = summary,
-          models_used = {"gpt-4o", "gpt-4o-mini"}
+          models_used = {"openai/gpt-4o", "openai/gpt-4o-mini"}
         }
     end
 }

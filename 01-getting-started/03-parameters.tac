@@ -1,13 +1,7 @@
 -- Parameters Example
 -- Demonstrates accessing parameters and using them in procedure logic
 
--- Agents (defined at top level - reusable across procedures)
-worker = Agent {
-    provider = "openai",
-    system_prompt = "A worker agent",
-    initial_message = "Processing task",
-    tools = {}
-}
+-- No agents are needed for this example.
 
 -- Procedure with input and output defined inline
 Procedure {

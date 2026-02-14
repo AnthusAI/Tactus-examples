@@ -1,6 +1,5 @@
 World = Agent {
-  provider = "openai",
-  model = "gpt-4o-mini",
+  model = "openai/gpt-4o-mini",
   system_prompt = "Your name is World."
 }
 
@@ -15,4 +14,5 @@ Feature: Hello World
     Then the output should fuzzy match any of ["Hello", "Hi", "Hey"] with threshold 0.9
 ]])
 
-return World("Hello, World!")
+local result = World({message = "Hello, World!"})
+return (result and (result.output or result)) or ""

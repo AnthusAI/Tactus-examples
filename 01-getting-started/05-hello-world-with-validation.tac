@@ -2,8 +2,7 @@
 -- This example demonstrates the formal Procedure structure with schema validation
 
 World = Agent {
-  provider = "openai",
-  model = "gpt-4o-mini",
+  model = "openai/gpt-4o-mini",
   system_prompt = "Your name is World. Greet users in a friendly manner."
 }
 
@@ -40,10 +39,11 @@ Procedure {
         )
         
         -- Get the agent's response
-        local response = World(message)
+        local result = World({message = message})
+        local greeting = (result and (result.output or result)) or ""
         
         return {
-            greeting = response,
+            greeting = greeting,
             language_used = input.language
         }
     end

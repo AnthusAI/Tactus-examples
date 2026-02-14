@@ -7,8 +7,7 @@ local done = require("tactus.tools.done")
 
 -- Agent definition
 completer = Agent {
-    provider = "openai",
-    model = "gpt-4o-mini",
+    model = "openai/gpt-4o-mini",
     system_prompt = [[You are a helpful assistant that completes tasks.
 
 CRITICAL INSTRUCTIONS:

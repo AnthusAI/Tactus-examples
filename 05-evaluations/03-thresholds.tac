@@ -5,8 +5,7 @@
 local done = require("tactus.tools.done")
 
 greeter = Agent {
-    provider = "openai",
-    model = "gpt-4o-mini",
+    model = "openai/gpt-4o-mini",
     system_prompt = [[You are a friendly greeter.
 
 Generate a warm, personalized greeting for the given name.
