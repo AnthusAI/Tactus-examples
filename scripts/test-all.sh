@@ -29,12 +29,20 @@ if [[ -z "$PYTHON_BIN" ]]; then
 fi
 
 if [[ -z "$PYTHON_BIN" ]]; then
-  for candidate in python3.13 python3.12 python3.11 python3 python; do
+  # Prefer the configured Actions python (`python`/`python3`) first, then fall back
+  # to versioned binaries. This avoids accidentally selecting a system python that
+  # doesn't have `tactus` installed.
+  for candidate in python python3 python3.13 python3.12 python3.11; do
     if command -v "$candidate" >/dev/null 2>&1; then
       if "$candidate" - <<'PY' >/dev/null 2>&1; then
 import sys
-ok = sys.version_info >= (3, 11)
-raise SystemExit(0 if ok else 1)
+if sys.version_info < (3, 11):
+    raise SystemExit(1)
+try:
+    import tactus  # noqa: F401
+except Exception:
+    raise SystemExit(1)
+raise SystemExit(0)
 PY
         PYTHON_BIN="$candidate"
         break
@@ -44,7 +52,7 @@ PY
 fi
 
 if [[ -z "$PYTHON_BIN" ]]; then
-  echo "ERROR: Need Python 3.11+ to run Tactus examples." >&2
+  echo "ERROR: Need Python 3.11+ with 'tactus' installed to run Tactus examples." >&2
   echo "Set TACTUS_PYTHON to a compatible interpreter (or use CI)." >&2
   exit 2
 fi
