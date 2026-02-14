@@ -1,84 +1,83 @@
---[[
-Simple HITL (Human-in-the-Loop) Example
+-- Human-in-the-Loop (HITL): the basics
+--
+-- This example demonstrates the core HITL primitives:
+-- - Human.approve() for yes/no decisions
+-- - Human.input() for collecting text input
+-- - Human.review() for reviewing an artifact
+--
+-- Test mocked (CI-safe; HITL auto-responds with defaults):
+--   ./scripts/test-all.sh
+--   tactus test 03-human-in-the-loop/01-basic-hitl.tac --mock
+--
+-- Run for real (CLI prompts; IDE shows components):
+--   tactus run 03-human-in-the-loop/01-basic-hitl.tac
 
-This example demonstrates the basic HITL capabilities:
-- Human.approve() for yes/no decisions
-- Human.input() for collecting text input
-- Human.review() for reviewing generated content
-
-Run with: tactus examples/90-hitl-simple.tac
---]]
-
-function main()
-    print("Starting HITL demo...")
-
-    -- 1. Simple approval request
-    print("\n=== APPROVAL REQUEST ===")
+Procedure {
+  output = {
+    completed = field.boolean{required = true},
+    user_name = field.string{required = true},
+    favorite_color = field.string{required = true},
+    review_decision = field.string{required = true}
+  },
+  function(_)
     local should_continue = Human.approve({
-        message = "Would you like to continue with the workflow?"
+      message = "Would you like to continue with the workflow?"
     })
 
     if not should_continue then
-        print("User declined. Stopping workflow.")
-        return {stopped = true}
+      return {
+        completed = false,
+        user_name = "",
+        favorite_color = "",
+        review_decision = "rejected"
+      }
     end
 
-    print("User approved! Continuing...")
-
-    -- 2. Input request
-    print("\n=== INPUT REQUEST ===")
     local user_name = Human.input({
-        message = "What is your name?",
-        placeholder = "Enter your name..."
-    })
+      message = "What is your name?",
+      placeholder = "Enter your name..."
+    }) or ""
 
-    print("Hello, " .. user_name .. "!")
-
-    -- 3. Input with options
-    print("\n=== INPUT WITH OPTIONS ===")
     local color = Human.input({
-        message = "What is your favorite color?",
-        options = {
-            {label = "Red", value = "red"},
-            {label = "Blue", value = "blue"},
-            {label = "Green", value = "green"}
-        }
-    })
+      message = "What is your favorite color?",
+      options = {
+        {label = "Red", value = "red"},
+        {label = "Blue", value = "blue"},
+        {label = "Green", value = "green"}
+      }
+    }) or ""
 
-    print("You chose: " .. color)
-
-    -- 4. Review request
-    print("\n=== REVIEW REQUEST ===")
     local generated_text = "This is a sample document that was generated."
-
     local review_result = Human.review({
-        message = "Please review this generated document",
-        artifact = generated_text,
-        artifact_type = "document"
-    })
+      message = "Please review this generated document",
+      artifact = generated_text,
+      artifact_type = "document"
+    }) or {}
 
-    print("Review decision: " .. review_result.decision)
-    if review_result.feedback then
-        print("Feedback: " .. review_result.feedback)
-    end
-
-    -- 5. Final confirmation
-    print("\n=== FINAL CONFIRMATION ===")
     local final_approval = Human.approve({
-        message = "Complete the workflow and save results?",
-        timeout = 60  -- 60 second timeout
+      message = "Complete the workflow and save results?",
+      timeout = 60,
+      default = false
     })
 
-    if final_approval then
-        print("Workflow completed successfully!")
-        return {
-            completed = true,
-            user_name = user_name,
-            favorite_color = color,
-            review = review_result
-        }
-    else
-        print("Workflow cancelled by user.")
-        return {completed = false}
-    end
-end
+    return {
+      completed = final_approval and true or false,
+      user_name = user_name,
+      favorite_color = color,
+      review_decision = review_result.decision or ""
+    }
+  end
+}
+
+Specification([[
+Feature: Human-in-the-loop basics
+
+  Scenario: Workflow completes in mocked mode
+    Given the procedure has started
+    When the procedure runs
+    Then the procedure should complete successfully
+    And the output completed should be true
+    And the output user_name should exist
+    And the output review_decision should be "Approve"
+]])
+
