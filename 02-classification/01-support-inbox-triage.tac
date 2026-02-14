@@ -33,14 +33,25 @@ If the request is unclear, choose "other".
 }
 -- SNIPPET END
 
+-- Deterministic model responses for CI-safe specs.
+--
+-- The LLM classifier retries if the predicted value isn't in the allowed class set.
+-- With temporal mocks, we can simulate an invalid first attempt followed by a valid one.
+Mocks {
+  support_triage_llm = {
+    temporal = {
+      {value = "Maybe", confidence = 0.2},
+      {value = "billing", confidence = 0.91}
+    }
+  }
+}
+
 Specification([[
 Feature: Support inbox triage
 
   Scenario: Invalid output triggers retry and still returns a valid label
     Given the procedure has started
     And the input message is "I was double charged this month. Please refund me."
-    And the agent "support_triage_llm" responds with "Maybe"
-    And the agent "support_triage_llm" responds with "billing\nThe message is about being charged twice and requesting a refund."
     When the procedure runs
     Then the procedure should complete successfully
     And the output label should be "billing"

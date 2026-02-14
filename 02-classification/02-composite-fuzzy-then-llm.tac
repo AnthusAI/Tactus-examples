@@ -51,6 +51,13 @@ Procedure {
 }
 -- SNIPPET END
 
+-- Deterministic model response for CI-safe specs.
+Mocks {
+  support_triage_llm_fallback = {
+    returns = {value = "bug", confidence = 0.93}
+  }
+}
+
 Specification([[
 Feature: Composite classification
 
@@ -64,7 +71,6 @@ Feature: Composite classification
   Scenario: LLM fallback handles the long tail
     Given the procedure has started
     And the input message is "After the last update, the app crashes whenever I click Save."
-    And the agent "support_triage_llm_fallback" responds with "bug\nThe user describes a crash triggered by an action in the app."
     When the procedure runs
     Then the output label should be "bug"
     And the output path should be "llm"

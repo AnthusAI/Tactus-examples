@@ -25,7 +25,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install Tactus
-        run: pip install tactus
+        run: pip install "git+https://github.com/AnthusAI/Tactus.git@main"
 
       - name: Run Tests
         run: |
