@@ -1,0 +1,45 @@
+Tactus-examples LLM Guidance (Canonical)
+
+This repository contains runnable examples of the Tactus DSL.
+This file is intended for AI assistants and automated tooling so they can:
+- understand the canonical syntax patterns used here
+- avoid hallucinating obsolete APIs
+
+Primary canonical references live in the main Tactus repo:
+- llms.txt
+- docs/model-primitive.md
+- docs/agent-primitive.md
+- docs/model-training-walkthrough.md
+
+================================================================================
+MODEL PRIMITIVE
+================================================================================
+
+Models are stateless inference interfaces (classification/extraction/scoring).
+
+Canonical runtime call pattern:
+
+  local m = Model("imdb_nb")
+  local result = m({text = input.text})
+  local out = result.output or result
+
+Trainable models keep training config inside the Model block:
+
+  Model "imdb_nb" { ..., training = { data = {...}, candidates = {...} } }
+
+CLI:
+- Train:    tactus train file.tac --model imdb_nb
+- Evaluate: tactus models evaluate file.tac --model imdb_nb
+
+Testing:
+- CI-safe: use `Mocks { ... }` + `tactus test file.tac --mock`
+- Real: train then run `tactus test file.tac` (loads from registry)
+
+================================================================================
+AGENT PRIMITIVE
+================================================================================
+
+Agents are stateful multi-turn runtimes (LLM + tools).
+
+In CI, mock agents with `Mocks { agent_name = { tool_calls = [...], message = ... } }`.
+

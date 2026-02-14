@@ -2,6 +2,8 @@
 
 Educational examples for the Tactus programming language. This repository contains runnable, tested examples organized by topic to help you learn Tactus.
 
+For AI assistants/tools, see `llms.txt` for canonical syntax guidance.
+
 ## Purpose
 
 This repository is the single source of truth for educational Tactus examples. These examples are:
