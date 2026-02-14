@@ -94,6 +94,18 @@ Quantitative assessments: running evaluations over datasets, metrics, thresholds
 ### [06-advanced-features](06-advanced-features/)
 Advanced capabilities: tools, MCP integration, sub-procedures, and custom models. _Examples coming soon._
 
+### [02-classification](02-classification/)
+Real-world classification patterns: route messy text into explicit label sets using LLMs and fuzzy matching.
+
+### [03-human-in-the-loop](03-human-in-the-loop/)
+Patterns for integrating human decision-making into AI workflows, including agent-driven approval requests.
+
+### [02-classification](02-classification/)
+Real-world classification patterns: route messy text into explicit label sets using LLMs and fuzzy matching.
+
+### [03-human-in-the-loop](03-human-in-the-loop/)
+Patterns for integrating human decision-making into AI workflows, including agent-driven approval requests.
+
 ## For Tactus-web Integration
 
 This repository is designed to be ingested by the Tactus-web build process. See [README-INGESTION.md](README-INGESTION.md) for details on the ingestion pipeline and frontmatter requirements.
