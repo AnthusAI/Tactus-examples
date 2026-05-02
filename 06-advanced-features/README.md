@@ -14,7 +14,15 @@ This chapter covers advanced Tactus capabilities for building sophisticated AI w
 
 ## Examples
 
-_Examples coming soon. This chapter will demonstrate advanced patterns for complex AI applications._
+_Runnable examples coming soon. This chapter will demonstrate advanced patterns for complex AI applications._
+
+### One Tool For Everything
+
+Tactus can be used as a programmable integration surface. Instead of exposing a large MCP catalog as many separate tools, a host application can expose one tool that runs sandboxed Tactus snippets. The host injects an application module, so code can use `require("your_app")` and call a typed SDK-like surface for the host application's capabilities.
+
+This is also a context-efficiency pattern: the MCP client starts with one self-documenting tool, then asks that tool for focused docs and examples only for the capability it needs.
+
+Plexus is a real-world example of this pattern with `execute_tactus`; its runtime injects `plexus` so snippets can call Plexus APIs without repeating the import. The Tactus site describes the broader pattern here: [One Tool For Everything](https://tactus.anth.us/use-cases/one-tool-programmable-api/).
 
 ## Key Concepts
 
@@ -29,3 +37,5 @@ _Examples coming soon. This chapter will demonstrate advanced patterns for compl
 **Custom Models**: Integration with non-LLM models like classifiers, regressors, or custom PyTorch models. Useful for hybrid AI workflows.
 
 **Host Tools**: Tools that run on the host system (outside the sandbox). Accessed via a broker pattern for controlled execution.
+
+**Host-Registered Modules**: Application-specific modules injected by an embedding host and imported from Tactus with `require(...)`. They let one programmable gateway expose a broad application surface without publishing every operation as a separate tool.
