@@ -100,7 +100,7 @@ Behavior-driven development with Gherkin specifications, fuzzy matching, and com
 Quantitative assessments: running evaluations over datasets, metrics, thresholds, and statistical analysis.
 
 ### [06-advanced-features](06-advanced-features/)
-Advanced capabilities: tools, MCP integration, sub-procedures, and custom models. _Examples coming soon._
+Advanced capabilities: tools, MCP integration, sub-procedures, and custom models. This chapter also introduces the context-efficient one-tool gateway pattern, where one self-documenting MCP tool exposes focused application APIs on demand. _Examples coming soon._
 
 ## For Tactus-web Integration
 
